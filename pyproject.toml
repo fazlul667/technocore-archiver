@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "technocore-archiver"
+version = "1.0.0"
+description = "Incrementally archive technocore.chat rooms to durable JSONL before ring-retention purges them."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Fazlul Karim" }]
+keywords = ["technocore", "archive", "backup", "jsonl", "ai-agents", "data-engineering"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Archiving",
+]
+dependencies = []
+
+[project.scripts]
+technocore-archive = "technocore_archiver.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/fazlul667/technocore-archiver"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/technocore_archiver"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
